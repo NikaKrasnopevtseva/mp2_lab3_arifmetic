@@ -8,23 +8,23 @@
 
 template<typename T>
 class TVectorStack {
-	int top;
+	int top; //индекс верхушки
 	std::vector<T> mem;
 public:
 	TVectorStack() : top(-1) { }
-	size_t size() const { return top + 1; }
-	bool IsEmpty() const { return top == -1; }
-	void Push(const T& val) {
+	size_t size() const { return top + 1; } //смотрим длину стека
+	bool IsEmpty() const { return top == -1; } //смотрим пусто ли
+	void Push(const T& val) {  //добавляем наверх
 		mem.push_back(val); top++;
 	}
-	T Pop() {
+	T Pop() { //убираем сверху
 		if (IsEmpty()) {
 			throw std::out_of_range("try to get element from empty stack");
 		}
 		T val = mem.back();
 		mem.pop_back(); top--; return val;
 	}
-	T Top() {
+	T Top() { //смотрим верхушку
 		if (IsEmpty()) {
 			throw std::out_of_range("try to check element from empty stack");
 		}
